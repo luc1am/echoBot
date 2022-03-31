@@ -122,7 +122,7 @@ function draw() {
   }
 
   //trigger next window
-  if (promptCount==15){
+  if (promptCount==11){
     input.hide();
     send.hide();
     shareLines.hide();
@@ -167,7 +167,7 @@ function welcome(){
 //can it be the same function?
 function moveF(){
   //adds more from other people data
-  promptCount =16;
+  promptCount =12;
   input.show();
   send.show();
   shareLines.show();
@@ -179,7 +179,7 @@ function moveF(){
 }
 function moveB(){
   //adds from truth and narcissus
-  promptCount =16;
+  promptCount =12;
   input.show();
   send.show();
   shareLines.show();
