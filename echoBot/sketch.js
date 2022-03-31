@@ -33,7 +33,7 @@ class UserText{
     this.frame_0 = frame_0;
   }
   display(){
-    fill(150,150,150,this.colorFade-(frameCount - this.frame_0));
+    fill(150,150,150,this.colorFade-(0.5*(frameCount - this.frame_0)));
     text(this.text, this.x,this.y);
   }
 }
@@ -202,7 +202,7 @@ function talk(){
   promptCount++;
   userTextArr.push(new UserText(
     response,
-    random(width), random(height),
+    random(width - 100), random(height-100),
     frameCount));
 }
 
