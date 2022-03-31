@@ -173,6 +173,7 @@ function moveF(){
   shareLines.show();
 
   rm.addText(otherUserLines);
+  rm.addText(narcLines);
   console.log(otherUserLines);
 
 }
@@ -182,9 +183,9 @@ function moveB(){
   input.show();
   send.show();
   shareLines.show();
-
+  rm.addText(otherUserLines);
   rm.addText(allegoryLines);
-  rm.addText(narcLines);
+  
 }
 
 
