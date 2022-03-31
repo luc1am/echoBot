@@ -33,7 +33,7 @@ class UserText{
     this.frame_0 = frame_0;
   }
   display(){
-    fill(150,150,150,this.colorFade-(0.5*(frameCount - this.frame_0)));
+    fill(150,150,150,this.colorFade-(0.1*(frameCount - this.frame_0)));
     text(this.text, this.x,this.y);
   }
 }
