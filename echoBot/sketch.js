@@ -236,7 +236,7 @@ function mousePressed(){
 }
 
 function sendData(){
-  ref.push(userLines);
+  ref.push(otherUserLines);
   // console.log(userLines);
 }
 
