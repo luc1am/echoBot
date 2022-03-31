@@ -18,6 +18,9 @@ let promptCount = 0;
 let forward;
 let backwards;
 
+let isFore = false;
+let isBack = false;
+
 //firebase Stuff
 let database, ref;
 let disclaim = "when you press ''send to database'' your input text will be saved on a public database.";
@@ -33,6 +36,16 @@ class UserText{
     this.frame_0 = frame_0;
   }
   display(){
+    if (promptCount >12){
+      if(isFore == true){
+        fill(255,255,255,this.colorFade-(0.1*(frameCount - this.frame_0)));
+      }
+      if(isBack == true){
+        fill(50,50,50,this.colorFade-(0.1*(frameCount - this.frame_0)));
+      }
+    }else{
+      fill(150,150,150,this.colorFade-(0.1*(frameCount - this.frame_0)));
+    }
     fill(150,150,150,this.colorFade-(0.1*(frameCount - this.frame_0)));
     text(this.text, this.x,this.y);
   }
@@ -87,12 +100,12 @@ function setup() {
   //what is an n-factor
 
   rm = RiTa.markov(2);
-
+  // sound.play();
+  // sound.loop();
 }
 
 function draw() {
-  // sound.play();
-  // sound.loop();
+  blendMode(BLEND);
   //noLoop();
   forward.hide();
   backwards.hide();
@@ -122,7 +135,7 @@ function draw() {
   }
 
   //trigger next window
-  if (promptCount==11){
+  if (promptCount==12){
     input.hide();
     send.hide();
     shareLines.hide();
@@ -141,6 +154,10 @@ function draw() {
   }
 }
 
+
+function drawBackground(){
+
+}
 
 function welcome(){
   if (startFlag == false){
@@ -166,8 +183,9 @@ function welcome(){
 
 //can it be the same function?
 function moveF(){
+  isFore = true;
   //adds more from other people data
-  promptCount =12;
+  promptCount =16;
   input.show();
   send.show();
   shareLines.show();
@@ -175,23 +193,29 @@ function moveF(){
   rm.addText(otherUserLines);
   rm.addText(narcLines);
   console.log(otherUserLines);
+  blendMode(EXCLUSION);
+  fill(200);
+  rect(width/2, height/2, width,height);
+
 
 }
 function moveB(){
+  isBack = true;
   //adds from truth and narcissus
-  promptCount =12;
+  promptCount =16;
   input.show();
   send.show();
   shareLines.show();
-  rm.addText(otherUserLines);
+
   rm.addText(allegoryLines);
-  
+  rm.addText(otherUserLines);
 }
 
 
 function talk(){
   if (input.value()){
     userLines.push(input.value());
+    otherUserLines.push(input.value());
     //fill(200);
     print(userLines);
     rm.addText(userLines)
